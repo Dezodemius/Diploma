@@ -1,21 +1,36 @@
 clc; clear all; close all;
 
-SAVE_PATH = '/home/dezodemius/Documents/Diploma/img/';
+[check, CURRENT_PATH] = system('pwd;');
+
+[check, SAVE_PATH] = system('cd ../img/; pwd;');
+
+CURRENT_PATH = strsplit(CURRENT_PATH, "\n");
+
+SAVE_PATH = strsplit(SAVE_PATH, "\n");
+
+CURRENT_PATH = strcat(CURRENT_PATH{1}, '/');
+
+SAVE_PATH = strcat(SAVE_PATH{1}, '/');
 
 DELIMETER = ',';
 
-SAVE_FORMAT = '.bmp';
+SAVE_FORMAT = '.jpg';
 
-[check, file_path] = system('path="../TorusStatistics/"; for folder in $(ls $path); do find $path$folder -name "*.3TD"; done');
-[check, file_name] = system('path="../TorusStatistics/"; for folder in $(ls $path); do cd $path$folder; ls *.3TD; done');
+[check, file_path] = system('cd ../TorusStatistics; path=$(pwd); for folder in $(ls $path/); do find $path/$folder -name "*.3TD"; done');
+
+[check, file_name] = system('cd ../TorusStatistics; path=$(pwd); for folder in $(ls $path/); do cd $path/$folder; ls *.3TD; done');
   
 file_path = strsplit(file_path, "\n");
+
 file_name = strsplit(file_name, "\n");
 
 file_path = file_path(1:size(file_path)(2)-1);
+
 file_name = file_name(1:size(file_name)(2)-1);
 
 choose = 1;
+
+printf("CURRENT_PATH=%s\nSAVE_PATH=%s\n", CURRENT_PATH, SAVE_PATH);
 
 saved = input("0 -- Save to file\n1 -- Show plot\nYour choose: ");
 
