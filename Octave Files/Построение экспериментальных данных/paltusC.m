@@ -47,9 +47,9 @@ function [] = paltusC (path, file_name, delimeter, save_path, save_format, saved
   for i=1:size(C, 2)
     subplot(m, n, i);
     
-    plot(t, C(:, i), "-ob", "markersize", 0.5, "linewidth", 2);
+    plot(t, sgolayfilt(C(:, i), 3, 41), "linewidth", 2);
     
-    plot(t, C(:, i), "-ok", "markersize", 2, "linewidth", 1);
+    %plot(t, C(:, i), "-ok", "markersize", 2, "linewidth", 1);
   
     xlabel("t");
  
@@ -57,7 +57,7 @@ function [] = paltusC (path, file_name, delimeter, save_path, save_format, saved
   endfor    
   
     if saved == true
-      saveas(f, strcat(save_path, strcat('Center', file_name), save_format));
+      saveas(f, strcat(save_path, 'Center/', strcat('Center', file_name), save_format));
 
       close(f);
     endif

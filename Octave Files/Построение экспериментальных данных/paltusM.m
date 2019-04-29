@@ -56,15 +56,10 @@ function [] = paltusM (path, file_name, delimeter, save_path, save_format, saved
     f = figure(1);
   endif
   
-  plot3(x1, y1, z1, "-or", "markersize", 4, "linewidth", 2);
-  plot3(x2, y2, z2, "-ob", "markersize", 4, "linewidth", 2);
-  plot3(x3, y3, z3, "-ok", "markersize", 4, "linewidth", 2);
-  plot3(x4, y4, z4, "-og", "markersize", 4, "linewidth", 2);
-  
-  plot3(sgolayfilt(x1, 3, 41), sgolayfilt(y1, 3, 41), sgolayfilt(z1, 3, 41), "-og", "markersize", 2, "linewidth", 1);
-  plot3(sgolayfilt(x2, 3, 41), sgolayfilt(y2, 3, 41), sgolayfilt(z2, 3, 41), "-ok", "markersize", 2, "linewidth", 1);
-  plot3(sgolayfilt(x3, 3, 41), sgolayfilt(y3, 3, 41), sgolayfilt(z3, 3, 41), "-ob", "markersize", 2, "linewidth", 1);
-  plot3(sgolayfilt(x4, 3, 41), sgolayfilt(y4, 3, 41), sgolayfilt(z4, 3, 41), "-or", "markersize", 2, "linewidth", 1);
+  plot3(sgolayfilt(x1, 3, 41), sgolayfilt(y1, 3, 41), sgolayfilt(z1, 3, 41), "linewidth", 1);
+  plot3(sgolayfilt(x2, 3, 41), sgolayfilt(y2, 3, 41), sgolayfilt(z2, 3, 41), "linewidth", 1);
+  plot3(sgolayfilt(x3, 3, 41), sgolayfilt(y3, 3, 41), sgolayfilt(z3, 3, 41), "linewidth", 1);
+  plot3(sgolayfilt(x4, 3, 41), sgolayfilt(y4, 3, 41), sgolayfilt(z4, 3, 41), "linewidth", 1);
     
   rotate3d;
   
@@ -81,7 +76,7 @@ function [] = paltusM (path, file_name, delimeter, save_path, save_format, saved
   legend({'1', '2', '3', '4'});
 
   if saved == true
-    saveas(f, strcat(save_path, strcat("Markers", file_name), save_format));
+    saveas(f, strcat(save_path, 'Markers/', strcat("Markers", file_name), save_format));
     close(f);
   endif
   

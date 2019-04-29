@@ -67,9 +67,7 @@ function [] = paltusV (path, file_name, delimeter, save_path, save_format, saved
   for i = 1:size(C, 2)
     subplot(m, n, i);
     
-    plot(t', V(:, i), "-or", "markersize", 4, "linewidth", 2);
-    
-    plot(t', sgolayfilt(V(:, i), 3, 41), "-ob", "markersize", 2, "linewidth", 1);
+    plot(t', sgolayfilt(V(:, i), 3, 41), "linewidth", 2);
   
     xlabel("t");
  
@@ -77,7 +75,7 @@ function [] = paltusV (path, file_name, delimeter, save_path, save_format, saved
   endfor    
   
     if saved == true
-      saveas(f, strcat(save_path, strcat("Velocities", file_name), save_format));
+      saveas(f, strcat(save_path, 'Velocities/' ,strcat("Velocities", file_name), save_format));
 
       close(f);
     endif
