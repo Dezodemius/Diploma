@@ -1,0 +1,10 @@
+set terminal eps enhanced size 14cm,8cm font 'Times-Roman,12'
+set output '/home/dez/Documents/Diploma/pics/alpha.eps'
+
+set multiplot layout 1, 2
+set datafile separator ","
+data1 = 'DATA.UVT'
+data2 = 'filtDATA.csv'
+plot data1 using 28:19 with lines title '{/Symbol a}' lw 2 lt rgb 'black',\
+    data2 using 2:1 with lines title '{Filtred {/Symbol a}}' lw 2 lt rgb 'red'
+unset multiplot

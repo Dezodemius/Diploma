@@ -22,7 +22,7 @@
 ## Author: Egor Gladkov <dez@dezodemius-lenovo>
 ## Created: 2019-02-22
 
-function [y_] = my_sgolayfilt (y)
+function [y_] = my_sgolayfilt1 (y)
   a = 1;
   b = 10;
   step = 0.2;

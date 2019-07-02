@@ -1,0 +1,32 @@
+set encoding koi8r
+set terminal eps enhanced size 14cm,8cm font 'Times New Roman,14'
+set output '/home/dez/Documents/Diploma/pics/alpha.eps'
+
+set multiplot layout 1, 2
+
+#set title "Original"
+set title 'Оригинал'
+set datafile separator ","
+data1 = 'DATA.UVT'
+data2 = 'filtDATA.csv'
+set xlabel 'Time, sec'
+#set xlabel 'Время, сек'
+set ylabel '{/Symbol a}'
+set xrange[0:3]
+set yrange[-0.3:0.2]
+set ytics -0.3, 0.05, 0.2 
+set grid
+set key left 
+plot data1 using 28:19 with lines title '{/Symbol a}' lw 2 lt rgb 'black',\
+    data2 using 2:1 with lines title '{{/Symbol a}_{filt}}' lw 2 lt rgb 'red'
+    
+#set title 'Increased'
+set title 'Увеличено'
+set xrange[1.5:2]
+set yrange[-0.15:-0.1]
+set ytics -0.15, 0.005, -0.1 
+
+plot data1 using 28:19 with lines title '{/Symbol a}' lw 2 lt rgb 'black',\
+    data2 using 2:1 with lines title '{{/Symbol a}_{filt}}' lw 2 lt rgb 'red'
+    
+unset multiplot
